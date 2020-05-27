@@ -148,7 +148,7 @@
         },
         "_artifactsLocation": {
             "type": "string",
-            "defaultValue": "https://raw.githubusercontent.com/ashdsetty/Cylerian/master/",
+            "defaultValue": "https://raw.githubusercontent.com/ashdsetty/Detection/master/",
             "metadata": {
                 "description": "The location of resources, such as templates and DSC modules, that the template depends on"
             }
@@ -218,8 +218,7 @@
         "subnetRange4": "192.168.0.0/24",
         "subnetRef4": "[resourceId('Microsoft.Network/virtualNetworks/subnets', variables('virtualNetworkNameB'), variables('subnetName4'))]",
 
-        "_artifactsLocation": "https://raw.githubusercontent.com/ashdsetty/Cylerian/master/"
-        "artifactsBlacksmithLocation": "https://raw.githubusercontent.com/ashdsetty/Blacksmith/master/",
+        "artifactsBlacksmithLocation": "https://raw.githubusercontent.com/ashdsetty/Detection/Blacksmith/master/",
 
         "customScriptExTemplateUri": "[uri(parameters('_artifactsLocation'), concat('environments/attack-evals/apt29/nestedtemplates/customScriptExtension.json', parameters('_artifactsLocationSasToken')))]",
         "prepareBoxScript": "[uri(variables('artifactsBlacksmithLocation'), 'resources/scripts/powershell/misc/Prepare-Box.ps1')]",
