@@ -146,13 +146,6 @@
                 "description": "Size of the virtual machine. Reference: https://docs.microsoft.com/en-us/azure/virtual-machines/sizes-general"
             }
         },
-        "_artifactsLocation": {
-            "type": "string",
-            "defaultValue": "https://raw.githubusercontent.com/ashdsetty/Detection/master/",
-            "metadata": {
-                "description": "The location of resources, such as templates and DSC modules, that the template depends on"
-            }
-        },
         "_artifactsLocationSasToken": {
             "type": "securestring",
             "defaultValue": "",
@@ -218,14 +211,13 @@
         "subnetRange4": "192.168.0.0/24",
         "subnetRef4": "[resourceId('Microsoft.Network/virtualNetworks/subnets', variables('virtualNetworkNameB'), variables('subnetName4'))]",
 
-        "_artifactsLocation": "https://raw.githubusercontent.com/ashdsetty/Cylerian/master/",
         "artifactsBlacksmithLocation": "https://raw.githubusercontent.com/ashdsetty/Detection/Blacksmith/master/",
 
-        "customScriptExTemplateUri": "[uri(parameters('_artifactsLocation'), concat('environments/attack-evals/apt29/nestedtemplates/customScriptExtension.json', parameters('_artifactsLocationSasToken')))]",
+        "customScriptExTemplateUri": "[uri('https://raw.githubusercontent.com/ashdsetty/Detection/master/', concat('environments/attack-evals/apt29/nestedtemplates/customScriptExtension.json', parameters('_artifactsLocationSasToken')))]",
         "prepareBoxScript": "[uri(variables('artifactsBlacksmithLocation'), 'resources/scripts/powershell/misc/Prepare-Box.ps1')]",
         "enableWinAuditCategories": "[uri(variables('artifactsBlacksmithLocation'), 'resources/scripts/powershell/auditing/Enable-WinAuditCategories.ps1')]",
         "enablePowerShellLoggingScript": "[uri(variables('artifactsBlacksmithLocation'), 'resources/scripts/powershell/auditing/Enable-PowerShell-Logging.ps1')]",
-        "installAgentScript": "[uri(variables('_artifactsLocation'), 'environments/attack-evals/apt29/scripts/Install-Endpoint-Agent.ps1')]",
+        "installAgentScript": "https://raw.githubusercontent.com/ashdsetty/Detection/master/environments/attack-evals/apt29/scripts/Install-Endpoint-Agent.ps1",
         "downloadSACLScript": "https://raw.githubusercontent.com/hunters-forge/Set-AuditRule/master/Set-AuditRule.ps1",
         "setSACLScript": "[uri(variables('artifactsBlacksmithLocation'), 'resources/scripts/powershell/auditing/Set-SACLs.ps1')]",
         "setIPAddressScript": "[uri(variables('artifactsBlacksmithLocation'), 'resources/scripts/powershell/misc/Set-StaticIP.ps1')]", 
@@ -704,7 +696,7 @@
                     },
                     "fileUris": {
                         "value": [
-                            "[uri(parameters('_artifactsLocation'), 'environments/attack-evals/apt29/scripts/Set-Victim.ps1')]",
+                            "[uri('https://raw.githubusercontent.com/ashdsetty/Detection/master/'), 'environments/attack-evals/apt29/scripts/Set-Victim.ps1')]",
                             "[uri(parameters('_artifactsLocation'), concat('environments/attack-evals/apt29/', if(parameters('useCalderaDIY'), 'scripts/Invoke-Sandcat.ps1', concat('payloads/', if(equals(parameters('pickScenario'), 'Day1'), 'day1', 'day2'), '/victim.zip'))))]"
                         ]
                     },
