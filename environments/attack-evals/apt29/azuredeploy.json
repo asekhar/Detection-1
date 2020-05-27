@@ -218,13 +218,14 @@
         "subnetRange4": "192.168.0.0/24",
         "subnetRef4": "[resourceId('Microsoft.Network/virtualNetworks/subnets', variables('virtualNetworkNameB'), variables('subnetName4'))]",
 
+        "_artifactsLocation": "https://raw.githubusercontent.com/ashdsetty/Cylerian/master/",
         "artifactsBlacksmithLocation": "https://raw.githubusercontent.com/ashdsetty/Detection/Blacksmith/master/",
 
         "customScriptExTemplateUri": "[uri(parameters('_artifactsLocation'), concat('environments/attack-evals/apt29/nestedtemplates/customScriptExtension.json', parameters('_artifactsLocationSasToken')))]",
         "prepareBoxScript": "[uri(variables('artifactsBlacksmithLocation'), 'resources/scripts/powershell/misc/Prepare-Box.ps1')]",
         "enableWinAuditCategories": "[uri(variables('artifactsBlacksmithLocation'), 'resources/scripts/powershell/auditing/Enable-WinAuditCategories.ps1')]",
         "enablePowerShellLoggingScript": "[uri(variables('artifactsBlacksmithLocation'), 'resources/scripts/powershell/auditing/Enable-PowerShell-Logging.ps1')]",
-        "installAgentScript": "[uri(variables('artifactsLocation'), 'environments/attack-evals/apt29/scripts/Install-Endpoint-Agent.ps1')]",
+        "installAgentScript": "[uri(variables('_artifactsLocation'), 'environments/attack-evals/apt29/scripts/Install-Endpoint-Agent.ps1')]",
         "downloadSACLScript": "https://raw.githubusercontent.com/hunters-forge/Set-AuditRule/master/Set-AuditRule.ps1",
         "setSACLScript": "[uri(variables('artifactsBlacksmithLocation'), 'resources/scripts/powershell/auditing/Set-SACLs.ps1')]",
         "setIPAddressScript": "[uri(variables('artifactsBlacksmithLocation'), 'resources/scripts/powershell/misc/Set-StaticIP.ps1')]", 
